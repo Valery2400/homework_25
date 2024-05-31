@@ -3,8 +3,8 @@
 //Найдите и выведите максимальное и минимальное числа в списке.
 //Отсортируйте список в порядке возрастания и выведите его.
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class DigitsInt {
@@ -22,21 +22,22 @@ public class DigitsInt {
         System.out.println("Дано "+integers.size()+" случайных чисел");
         System.out.println(integers);
 
-        int max = integers.getFirst();
-        int min = integers.getFirst();
+        int maxOldStyle = integers.getFirst();
+        int minOldStyle = integers.getFirst();
 
         for ( int i = 0; i < arrayListSize; i++) {
-            if (max < integers.get(i)) {
-                max = integers.get(i);
+            if (maxOldStyle < integers.get(i)) {
+                maxOldStyle = integers.get(i);
             }
-            if (min > integers.get(i)) {
-                min = integers.get(i);
+            if (minOldStyle > integers.get(i)) {
+                minOldStyle = integers.get(i);
             }
         }
+             int max = Collections.max(integers);
+             int min = Collections.min(integers);
 
-
-        System.out.println("Максимальное число в списке - " + max);
-        System.out.println("Минимальное число в списке - " + min);
+        System.out.println("Макс число в списке - " + maxOldStyle + " / *** " + max + " / ");
+        System.out.println("Мин число в списке - " + minOldStyle + " / *** " + min + " / ");
 
         for (int i = 0; i < integers.size() - 1; i++) {
             for (int j = 0; j < integers.size() - 1 - i; j++) {
@@ -49,6 +50,17 @@ public class DigitsInt {
         }
         System.out.println("ОтсортированыЙ по возрастанию список");
         System.out.println(integers);
+
+        Collections.shuffle(integers);
+
+        System.out.println("*** Перемешали все элементы");
+        System.out.println(integers);
+
+        Collections.sort(integers);
+
+        System.out.println("*** И опять отсортировали");
+        System.out.println(integers);
+
 
     }
 
